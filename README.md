@@ -104,6 +104,10 @@ rm -rf ~/miniconda3/miniconda.sh
 
 ```shell
 conda create -n peft python=3.10
+conda install ipykernel
+ipython kernel install --user --name=peft
+pip install -U huggingface_hub
+export HF_ENDPOINT=https://hf-mirror.com
 
 # 激活环境
 conda activate peft 
