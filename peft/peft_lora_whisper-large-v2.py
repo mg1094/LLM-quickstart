@@ -121,7 +121,7 @@ if os.path.exists("tokenized_common_voice"):
     from datasets import load_from_disk
     tokenized_common_voice = load_from_disk("tokenized_common_voice")
 else:
-    tokenized_common_voice = common_voice.map(prepare_dataset, num_proc=2)
+    tokenized_common_voice = common_voice.map(prepare_dataset, num_proc=4)
     tokenized_common_voice.save_to_disk("tokenized_common_voice")
 
 # 6. 数据整理器
