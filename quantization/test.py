@@ -4,7 +4,7 @@ os.environ["HF_HOME"] = "/root/autodl-tmp/cache"
 from transformers import AutoModelForCausalLM, AutoTokenizer, GPTQConfig
 import torch
 
-model_name_or_path = "facebook/opt-2.7b"
+model_name_or_path = "facebook/opt-6.7b"
 
 # wikitext2数据集是一个广泛用于语言建模任务的英文文本数据集，内容主要来自维基百科的文章。它被设计用于评估和训练自然语言处理模型，尤其是在文本生成和理解方面。wikitext2数据集包含了大量的自然语言句子，结构接近真实世界的百科全书条目，适合用作模型量化时的校准数据集。
 
@@ -23,7 +23,7 @@ force_download=True)
 
 print(quant_model.model.decoder.layers[0].self_attn.q_proj.__dict__)
 # 保存模型权重
-quant_model.save_pretrained("models/opt-2.7b-gptq")
+quant_model.save_pretrained("models/opt-6.7b-gptq")
 
 tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
 
