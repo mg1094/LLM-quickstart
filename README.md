@@ -104,13 +104,18 @@ rm -rf ~/miniconda3/miniconda.sh
 
 ```shell
 conda create -n peft python=3.10
-conda install ipykernel
-ipython kernel install --user --name=peft
+echo $SHELL
+conda init bash 然后重启客户端（audl需要）
+conda activate peft 
+pip install jupyter ipykernel
+# conda install ipykernel
+#ipython kernel install --user --name=peft
+python -m ipykernel install --user --name peft --display-name "Python (peft)"
 pip install -U huggingface_hub
 export HF_ENDPOINT=https://hf-mirror.com
 
 # 激活环境
-conda activate peft 
+
 ```
 
 之后每次使用需要激活此环境。
