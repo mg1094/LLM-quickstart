@@ -33,17 +33,23 @@ conda create -n deepspeed --clone base
 
 ```bash
 pip install git+https://github.com/huggingface/transformers
+或者
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+离线下载包
+pip install "transformers[torch]"
 ```
 
 ### 源代码安装 DeepSpeed
 
 根据你的 GPU 实际情况设置参数 `TORCH_CUDA_ARCH_LIST`。如果你需要使用 CPU Offload 优化器参数，设置参数 `DS_BUILD_CPU_ADAM=1`；如果你需要使用 NVMe Offload，设置参数 `DS_BUILD_UTILS=1`：
 
+3090显卡 对应的是 8.6
 ```bash
 git clone https://github.com/microsoft/DeepSpeed/
+git checkout tags/v0.13.1
 cd DeepSpeed
 rm -rf build
-TORCH_CUDA_ARCH_LIST="7.5" DS_BUILD_CPU_ADAM=1 DS_BUILD_UTILS=1 pip install . \
+TORCH_CUDA_ARCH_LIST="8.6" DS_BUILD_CPU_ADAM=1 DS_BUILD_UTILS=1 pip install . \
 --global-option="build_ext" --global-option="-j8" --no-cache -v \
 --disable-pip-version-check 2>&1 | tee build.log
 ```
