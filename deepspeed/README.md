@@ -29,14 +29,15 @@ conda create -n deepspeed --clone base
 
 ### 源代码安装 Transformers
 
-遵循[官方文档](https://huggingface.co/docs/transformers/installation#install-from-source)，通过下面的命令安装 Transformers：
+遵循[官方文档](https://huggingface.co/docs/transformers/installation#install-from-source)，通过下面的命令安装指定版本的 Transformers：
 
 ```bash
 pip install git+https://github.com/huggingface/transformers
 或者
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-离线下载包
-pip install "transformers[torch]"
+git clone https://github.com/huggingface/transformers
+cd transformers
+git checkout tags/v4.37.0
+pip install .
 ```
 
 ### 源代码安装 DeepSpeed
