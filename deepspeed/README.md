@@ -49,6 +49,15 @@ git clone https://github.com/microsoft/DeepSpeed/
 git checkout tags/v0.13.1
 cd DeepSpeed
 rm -rf build
+# TORCH_CUDA_ARCH_LIST="8.6": 设置 CUDA 架构列表为 8.6，适用于 3090 显卡
+# DS_BUILD_CPU_ADAM=1: 启用 CPU Offload 优化器参数功能
+# DS_BUILD_UTILS=1: 启用 NVMe Offload 功能
+# --global-option="build_ext": 指定全局选项为构建扩展模块
+# --global-option="-j8": 使用 8 个并行任务进行编译，加快编译速度
+# --no-cache: 不使用缓存，确保获取最新的包
+# -v: 启用详细输出模式，显示更多安装过程信息
+# --disable-pip-version-check: 禁用 pip 版本检查
+# 2>&1 | tee build.log: 将标准错误输出重定向到标准输出，并将输出内容同时保存到 build.log 文件中
 TORCH_CUDA_ARCH_LIST="8.6" DS_BUILD_CPU_ADAM=1 DS_BUILD_UTILS=1 pip install . \
 --global-option="build_ext" --global-option="-j8" --no-cache -v \
 --disable-pip-version-check 2>&1 | tee build.log

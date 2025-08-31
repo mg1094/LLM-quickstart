@@ -62,7 +62,7 @@ MBart and some T5 models require special handling.
 T5 models `t5-small`, `t5-base`, `t5-large`, `t5-3b` and `t5-11b` must use an additional argument: `--source_prefix "translate {source_lang} to {target_lang}"`. For example:
 
 ```bash
-python examples/pytorch/translation/run_translation.py \
+python translation/run_translation.py \
     --model_name_or_path t5-small \
     --do_train \
     --do_eval \

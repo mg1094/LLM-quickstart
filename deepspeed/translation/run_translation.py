@@ -22,6 +22,8 @@ import logging
 import os
 import sys
 import warnings
+# dataclasses 是 Python 3.7+ 标准库中的模块，用于简化数据类的定义，常与 @dataclass 装饰器和 field() 配合使用。
+# pydantic 是一个第三方库，主要用于数据验证和解析，支持类型检查、数据校验、自动转换等，常用于 FastAPI 等现代 Python Web 框架。
 from dataclasses import dataclass, field
 from typing import Optional
 
